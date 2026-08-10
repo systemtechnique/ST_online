@@ -1,0 +1,15 @@
+# Default technical owner. Business and specification rulings remain with the project
+# owner and must be recorded in docs/rulings before implementation.
+* @systemtechnique
+
+# Protected authority and governance documents.
+/CLAUDE.md @systemtechnique
+/AGENTS.md @systemtechnique
+/docs/specifications/ @systemtechnique
+/docs/rulings/ @systemtechnique
+
+# Database-owned artifacts. Keep these patterns as the database package is introduced.
+/packages/database/ @systemtechnique
+**/migrations/ @systemtechnique
+**/schema/ @systemtechnique
+**/reference-data/ @systemtechnique

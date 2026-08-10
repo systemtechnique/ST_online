@@ -1,6 +1,13 @@
 # Branch Protection Proposal
 
-**Status: PROPOSED - requires repository-owner approval and confirmed GitHub identities.**
+**Status: BLOCKED - repository plan and second reviewer identity pending.**
+
+On 10 August 2026, GitHub rejected the branch-protection API request for this private
+repository with HTTP 403: the current account must upgrade to GitHub Pro or make the
+repository public. Making the repository public is not acceptable because the
+specifications and project material are proprietary. Until the company approves a plan
+that supports private-repository protection, the rules below are followed manually and
+CI evidence is checked before every merge.
 
 Apply these rules to `main` after the company remote is created:
 
@@ -21,11 +28,18 @@ Apply these rules to `main` after the company remote is created:
 ## Review Ownership
 
 - The project owner rules business and specification questions.
-- The database-track owner reviews schema, migration, constraint, history, snapshot, and
-  import changes.
-- The web-track owner reviews frontend and client-contract effects.
+- Mohamed is the sole technical delivery owner and reviews schema, migration,
+  constraint, history, snapshot, import, backend, frontend, and client-contract effects.
 - Non-technical progress review does not replace the required technical owner review.
 
-`CODEOWNERS` must not be committed with placeholder accounts. Add it after the repository
-owner confirms the exact company GitHub usernames or teams.
+`@systemtechnique` is the confirmed company technical account and is recorded in
+`CODEOWNERS`. A pull-request approval requirement cannot safely be enabled until a
+second GitHub identity is confirmed: GitHub does not count a PR author's self-approval,
+so requiring one approval with only one participating account would block every merge.
+
+Once the repository plan supports protection, require pull requests and the `quality`
+status check but keep required approvals at zero until a second reviewer is confirmed.
+Owner business rulings remain mandatory and must be recorded in the repository before
+implementation. Once Kamal or the manager has a confirmed GitHub account, enable one
+required approval and required CODEOWNER review.
 
