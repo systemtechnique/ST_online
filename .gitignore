@@ -1,0 +1,29 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+.turbo/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Operational and imported data must never be committed
+data/raw/
+data/staging/
+data/reconciled/
+*.import.csv
+*.import.xlsx
+*.import.xls
+
+# Generated artifacts
+artifacts/
+reports/generated/
+
+# Tooling and OS files
+.DS_Store
+Thumbs.db
+*.log
+
