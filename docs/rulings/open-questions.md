@@ -24,7 +24,7 @@ remain unchanged.
 
 ### SPEC-003: Greenfield representation
 
-- **Status:** OPEN
+- **Status:** RESOLVED by `RULING-2026-08-10-001` (GitHub issue `#2`).
 - **Sources:** Data Model Rev 4 sections 1.2 and 7; Stage 1 E1 sections 2.1 and 2.5.
 - **Conflict:** Data Model Rev 4 treats `GREENFIELD` as a market-classification value. E1 describes a separate Greenfield/Operating `market_status`, with C/ANC/PC/Excluded applying after opening.
 - **Question:** Must the ERD use one classification axis or separate operating-status and market-classification fields?
@@ -32,7 +32,7 @@ remain unchanged.
 
 ### SPEC-004: Canonical branch structure
 
-- **Status:** OPEN
+- **Status:** RESOLVED by `RULING-2026-08-10-002` (GitHub issue `#3`).
 - **Sources:** Stage 1 E1 section 1; Branch & User Roster dated 6 August 2026.
 - **Conflict:** E1 separates Alexandria and North Coast and names Upper Egypt (Luxor/Aswan). The roster combines Alex + Sahel and names Luxor as a branch.
 - **Question:** What branch/area structure should the ERD and initial data use?
@@ -40,7 +40,7 @@ remain unchanged.
 
 ### SPEC-005: Extensible and multiple roles
 
-- **Status:** OPEN
+- **Status:** RESOLVED by `RULING-2026-08-10-003` (GitHub issue `#4`).
 - **Sources:** Data Model Rev 4 `app_user`; Users, Roles & Access Questionnaire Rev 3 Parts 3 and 4.
 - **Conflict:** Data Model Rev 4 defines one fixed enum role per `app_user`. The questionnaire describes OM-created office roles and asks about dual-role users.
 - **Question:** Is one fixed role per user the intended Stage 1 model, or must roles and permissions be configurable and many-to-many?
@@ -69,6 +69,19 @@ remain unchanged.
 - **Gap:** Stage 1 requires standard letters, daily flags, the SL watchlist, internal notifications, and access permissions, but their table structures are not defined in Data Model Rev 4.
 - **Question:** Will a later Data Model revision define these structures, or should each be proposed and ruled during the ERD process?
 - **Blocks:** The affected Stage 1 modules, not unrelated core entities.
+
+### SPEC-009: Detailed access matrix
+
+- **Status:** OPEN
+- **Sources:** CLAUDE.md section 4.8; Users, Roles & Access Questionnaire Rev 3 Part 4;
+  `RULING-2026-08-10-003`.
+- **Gap:** The role structure is ruled, but the questionnaire's eleven access decisions
+  remain blank, including cross-branch SL exceptions and Sales, Lab, Finance, Admin,
+  delegation, and user-administration permissions.
+- **Question:** What is the completed Stage 1 access matrix for every system and
+  configurable office role?
+- **Blocks:** Permission reference data and the final authorization contract. It does
+  not block the normalized role/permission ERD structure.
 
 ## Supplied-Data Questions
 
