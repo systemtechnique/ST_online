@@ -4,6 +4,7 @@ dist/
 coverage/
 .turbo/
 .tools/
+.pnpm-store/
 
 # Local environment and secrets
 .env

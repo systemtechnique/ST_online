@@ -17,7 +17,8 @@ features and does not authorize speculative schema work.
 - [ ] Obtain owner rulings for every ERD-blocking `SPEC-*` question.
 - [ ] Receive the completed Users, Roles & Access Questionnaire.
 - [ ] Confirm the canonical branch/area roster and initial role holders.
-- [ ] Install and verify Node.js 24 LTS, pinned pnpm, Docker, and PostgreSQL 18 tooling.
+- [ ] Install and verify the complete toolchain. Node.js 24.18.1, pnpm 11.21.0, and
+  TypeScript 6.0.3 are ready; Docker and PostgreSQL 18 tooling remain pending.
 - [ ] Record the database and migration-tool choice in an ADR.
 - [ ] Configure the company Git remote and confirm repository ownership.
 - [ ] Configure branch protection and required status checks on `main`.
@@ -39,4 +40,3 @@ Phase 0 is complete only when:
 6. The first implementation slice and its acceptance criteria are explicitly named.
 
 No migration is created before the affected ERD slice is approved.
-

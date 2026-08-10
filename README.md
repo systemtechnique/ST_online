@@ -28,9 +28,23 @@ record a `FLAG(spec)` question, and continue only independent work.
 
 See [`docs/phase-0/plan.md`](docs/phase-0/plan.md) for the Phase 0 gate.
 
+## Local Toolchain
+
+The project pins Node.js 24.18.1 and pnpm 11.21.0. On this workstation, portable copies
+are installed under the ignored `.tools` directory so the system Node.js installation is
+not changed. Use the committed wrappers from PowerShell for project commands:
+
+```powershell
+.\scripts\node-local.cmd --version
+.\scripts\pnpm-local.cmd install --frozen-lockfile
+```
+
+The wrappers fail if the exact local versions are absent. The committed
+`package.json`, `.node-version`, and `.npmrc` enforce the same baseline for other
+workstations and CI.
+
 ## Sensitive Data
 
 Client exports, contacts, SOW samples, credentials, generated reports, and reconciled
 imports are proprietary operational data. They remain outside Git and must be processed
 only through the controlled import path defined in the source profile.
-
