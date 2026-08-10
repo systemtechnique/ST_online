@@ -1,6 +1,6 @@
 # Local PostgreSQL 18 Environment
 
-**Status: CONFIGURED, NOT RUN - Docker is not installed on this workstation.**
+**Status: READY - verified on 10 August 2026.**
 
 The local environment uses the official `postgres:18.4` image. PostgreSQL recommends
 running the current minor release for the selected supported major version. Production
@@ -15,26 +15,34 @@ remains managed PostgreSQL and is configured separately.
 - PostgreSQL data is stored in a named Docker volume outside the repository.
 - The healthcheck waits for the configured database and user.
 
-## Start After Docker Is Approved And Installed
+## Local Setup And Start
 
 1. Create an uncommitted `.env` from the variable names in `.env.example`.
 2. Set a unique local-only `POSTGRES_PASSWORD`.
-3. Start and verify the service:
+3. Use `POSTGRES_PORT=5433` on this workstation because native PostgreSQL already uses
+   `5432`.
+4. Start and verify the service:
 
 ```powershell
-docker compose up -d postgres
+docker compose up -d --wait postgres
 docker compose ps
 docker compose exec postgres psql -U st_online_dev -d st_online_dev -c "select version();"
 ```
+
+The verified container is `st_online-postgres-1`, bound only to
+`127.0.0.1:5433`, with PostgreSQL `18.4`, UTC database time, and a healthy readiness
+check. The local `.env` contains a generated development-only password and is ignored by
+Git.
 
 Do not create tables by hand. The empty database remains empty until the database
 tooling ADR and first ERD slice are approved, after which migrations create the schema.
 
 ## Image Pinning Gate
 
-The patch tag is pinned to `18.4`. After the first approved pull, record and pin the
-official image digest as part of accepting the database-tooling ADR so CI and local
-environments use the same image content.
+The patch tag is pinned to `18.4`. The first verified pull resolved to digest
+`sha256:a02db8cac496f15b094798a38254f14d6e00741f709360e5e00bb6668ea31636`.
+Pin this digest in `compose.yaml` only as part of accepting the database-tooling ADR so
+CI and local environments use the same reviewed image content.
 
 Primary references:
 
