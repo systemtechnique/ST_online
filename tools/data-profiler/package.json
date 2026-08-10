@@ -1,0 +1,18 @@
+{
+  "name": "@st-online/data-profiler",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "profile": "node dist/src/cli.js",
+    "test": "pnpm run build && node --test dist/test/data-profiler.test.js",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "parse5": "8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3"
+  }
+}

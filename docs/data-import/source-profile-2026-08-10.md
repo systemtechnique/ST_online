@@ -3,6 +3,9 @@
 This is an aggregate profile only. No client names, contacts, phone numbers, email
 addresses, or source records are committed. The source files remain outside Git.
 
+The row, column, blank-key, duplicate-key, and source-hash results were independently
+reproduced by the tested TypeScript CLI in `tools/data-profiler` on 2026-08-10.
+
 ## Source Manifest
 
 | Source file | Bytes | SHA-256 |
