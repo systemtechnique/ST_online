@@ -3,6 +3,7 @@ node_modules/
 dist/
 coverage/
 .turbo/
+.tools/
 
 # Local environment and secrets
 .env
@@ -26,4 +27,3 @@ reports/generated/
 .DS_Store
 Thumbs.db
 *.log
-
