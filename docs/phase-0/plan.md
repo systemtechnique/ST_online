@@ -20,6 +20,8 @@ features and does not authorize speculative schema work.
   official PostgreSQL 18.4 development container.
 - [x] Record owner rulings for `SPEC-003`, `SPEC-004`, and `SPEC-005`, unblocking the
   first ERD structure.
+- [x] Render the proposed first ERD slice directly from Data Model Rev 4 plus the owner
+  rulings.
 
 ## Pending
 
@@ -36,7 +38,8 @@ features and does not authorize speculative schema work.
 - [ ] Approve the ERD process and ERD tool/output format.
 - [ ] Approve the API-contract process and ownership boundary.
 - [ ] Approve the database Definition of Done.
-- [ ] Render and review the first ERD slice directly from Data Model Rev 4 plus rulings.
+- [ ] Resolve the site-identity and authentication-identity flags found while rendering
+  the first ERD slice, then review and approve the diagram.
 
 ## Exit Criteria
 

@@ -83,6 +83,30 @@ remain unchanged.
 - **Blocks:** Permission reference data and the final authorization contract. It does
   not block the normalized role/permission ERD structure.
 
+### SPEC-010: Site identity fields
+
+- **Status:** OPEN
+- **Sources:** Data Model Rev 4 section 1.2 `site`; Stage 1 E1 section 2; supplied client
+  export.
+- **Gap:** The `site` entity has no name, operational/external identifier, address or
+  location fields, or active-state field. A property cannot be created, selected, or
+  reconciled safely with only the fields currently listed.
+- **Question:** What is the authoritative Stage 1 site identity and location field set,
+  including the treatment of the legacy Client Code?
+- **Blocks:** Approval and migration of `site`; overlaps `DATA-001` for import mapping.
+
+### SPEC-011: Application-user authentication identity
+
+- **Status:** OPEN
+- **Sources:** CLAUDE.md sections 4.8 and 6 step 1; Data Model Rev 4 section 1.1
+  `app_user`.
+- **Gap:** `app_user` defines a display name, branch, and active state but no login
+  identifier, email, or external identity-provider subject.
+- **Question:** What authentication provider and immutable login identifier must Stage 1
+  store for an application user?
+- **Blocks:** Approval and migration of `app_user` and the authentication contract. It
+  does not block review of reporting-line or role cardinality.
+
 ## Supplied-Data Questions
 
 ### DATA-001: Client external identifier

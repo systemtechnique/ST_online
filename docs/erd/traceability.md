@@ -12,11 +12,11 @@ Statuses:
 
 | Area | Entity | Status | Source / blocker |
 | --- | --- | --- | --- |
-| Organisation | `app_user` | READY | Data Model Rev 4 section 1.1; `RULING-2026-08-10-003` |
+| Organisation | `app_user` | PARTIAL | Data Model Rev 4 section 1.1; `RULING-2026-08-10-003`; authentication identity blocked by `SPEC-011` |
 | Organisation | `role`, `permission`, `user_role`, `role_permission` | PARTIAL | `RULING-2026-08-10-003`; exact permission seeds remain blocked by `SPEC-009` |
 | Organisation | `branch_area` | READY | Data Model Rev 4 section 1.1; `RULING-2026-08-10-002`; `DATA-004` affects legacy-area import, not table shape |
 | Clients | `client_group` | READY | Data Model Rev 4 section 1.2 |
-| Clients | `site` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001`; `DATA-001` to `DATA-003` affect import mapping |
+| Clients | `site` | PARTIAL | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001`; core identity fields blocked by `SPEC-010` |
 | Clients | `site_classification_history` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001` |
 | Clients | `site_branch_assignment` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-002` |
 | Clients | `contact` | PARTIAL | Data Model Rev 4 section 1.2; recipient mapping blocked by `DATA-005` |
@@ -47,5 +47,6 @@ branch-assignment histories.
 
 `SPEC-003`, `SPEC-004`, and `SPEC-005` are resolved. The slice may now be rendered for
 review. `SPEC-009` prevents final permission seed data but does not prevent the normalized
-role structure. No migration may be created until this ERD slice is reviewed and
-approved.
+role structure. The proposed rendering is in `docs/erd/stage-1-slice-1.md`. `SPEC-010`
+and `SPEC-011` must be ruled before the affected entity migrations, and no migration may
+be created until this ERD slice is reviewed and approved.
