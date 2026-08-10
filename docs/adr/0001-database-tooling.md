@@ -42,7 +42,7 @@ dependencies until this ADR is approved:
 | Node.js | 24.18.1 LTS |
 | TypeScript | 6.0.3 |
 | pnpm | 11.21.0 |
-| PostgreSQL | 18.x, exact image/client patch pinned at setup |
+| PostgreSQL | 18.4; official image digest pinned after first approved pull |
 | `node-pg-migrate` | 9.0.0 |
 | `pg` | 8.23.0 |
 

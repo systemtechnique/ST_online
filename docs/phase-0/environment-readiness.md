@@ -9,7 +9,7 @@ Checked on 2026-08-10 against `CLAUDE.md` section 2.
 | TypeScript | 6.x baseline | 6.0.3 in `pnpm-lock.yaml` | READY |
 | Docker | Required for deployment/environments | Not installed | BLOCKED |
 | Docker Compose | Required for local services | Not installed | BLOCKED |
-| PostgreSQL client | Compatible with PostgreSQL 18.x | Not installed | BLOCKED |
+| PostgreSQL | 18.x | Compose configured for official 18.4 image; Docker unavailable | BLOCKED until Docker installation and first verified pull |
 | Git | Required | 2.54.0.windows.1 | READY |
 
 Do not run project commands under the system Node.js 25 installation. Use
