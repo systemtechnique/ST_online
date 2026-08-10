@@ -1,6 +1,6 @@
 # Branch Protection Proposal
 
-**Status: PROPOSED - requires repository-owner approval and confirmed GitHub identities.**
+**Status: PROPOSED - technical owner confirmed; second reviewer identity pending.**
 
 Apply these rules to `main` after the company remote is created:
 
@@ -21,11 +21,17 @@ Apply these rules to `main` after the company remote is created:
 ## Review Ownership
 
 - The project owner rules business and specification questions.
-- The database-track owner reviews schema, migration, constraint, history, snapshot, and
-  import changes.
-- The web-track owner reviews frontend and client-contract effects.
+- Mohamed is the sole technical delivery owner and reviews schema, migration,
+  constraint, history, snapshot, import, backend, frontend, and client-contract effects.
 - Non-technical progress review does not replace the required technical owner review.
 
-`CODEOWNERS` must not be committed with placeholder accounts. Add it after the repository
-owner confirms the exact company GitHub usernames or teams.
+`@systemtechnique` is the confirmed company technical account and is recorded in
+`CODEOWNERS`. A pull-request approval requirement cannot safely be enabled until a
+second GitHub identity is confirmed: GitHub does not count a PR author's self-approval,
+so requiring one approval with only one participating account would block every merge.
+
+Until a second reviewer is confirmed, require pull requests and the `quality` status
+check but set required approvals to zero. Owner business rulings remain mandatory and
+must be recorded in the repository before implementation. Once Kamal or the manager has
+a confirmed GitHub account, enable one required approval and required CODEOWNER review.
 
