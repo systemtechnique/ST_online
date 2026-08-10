@@ -20,7 +20,7 @@ features and does not authorize speculative schema work.
 - [ ] Install and verify the complete toolchain. Node.js 24.18.1, pnpm 11.21.0, and
   TypeScript 6.0.3 are ready; Docker and PostgreSQL 18 tooling remain pending.
 - [ ] Record the database and migration-tool choice in an ADR.
-- [ ] Configure the company Git remote and confirm repository ownership.
+- [ ] Create and configure the private company Git remote; no remote is currently set.
 - [ ] Configure branch protection and required status checks on `main`.
 - [ ] Configure CODEOWNERS for the database package using confirmed GitHub identities.
 - [ ] Approve the ERD process and ERD tool/output format.
