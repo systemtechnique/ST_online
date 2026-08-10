@@ -18,12 +18,16 @@ features and does not authorize speculative schema work.
 - [x] Track the three first-slice owner rulings as GitHub issues `#2`, `#3`, and `#4`.
 - [x] Install and verify Docker Desktop 29.6.2, Docker Compose 5.3.1, WSL2, and the
   official PostgreSQL 18.4 development container.
+- [x] Record owner rulings for `SPEC-003`, `SPEC-004`, and `SPEC-005`, unblocking the
+  first ERD structure.
 
 ## Pending
 
-- [ ] Obtain owner rulings for every ERD-blocking `SPEC-*` question.
 - [ ] Receive the completed Users, Roles & Access Questionnaire.
-- [ ] Confirm the canonical branch/area roster and initial role holders.
+- [ ] Obtain owner rulings for the remaining module-specific `SPEC-*` questions before
+  implementing each affected slice.
+- [ ] Confirm legacy-area mappings and the detailed access matrix; these block import
+  and permission seeds, not the first ERD structure.
 - [ ] Record the database and migration-tool choice in an ADR.
 - [ ] Upgrade the GitHub plan to one that supports branch protection on a private
   repository, then require pull requests and the `quality` check on `main`.

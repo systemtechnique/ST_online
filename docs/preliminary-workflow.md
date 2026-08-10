@@ -124,19 +124,20 @@ Release evidence and any rollback or forward-fix procedure are recorded before d
 
 ## Current Gate - 10 August 2026
 
-The controlled baseline and privacy-safe profiling tools exist. The following items
-still prevent the first schema migration:
+The controlled baseline, privacy-safe profiling tools, private remote, CI, CODEOWNERS,
+and local PostgreSQL 18 environment exist. The following items still prevent the first
+schema migration:
 
-- Owner rulings for the ERD-blocking questions in `docs/rulings/open-questions.md`.
 - The completed Users, Roles & Access Questionnaire.
-- The canonical branch/area structure and initial role holders.
 - Approval of the ERD process, API-contract process, and database Definition of Done.
-- Docker/PostgreSQL tooling, the private Git remote, branch protection, and CODEOWNERS.
+- Review and approval of the first ERD slice.
+- GitHub private-repository branch protection, which requires a plan upgrade.
 - IT's written pass/fail production-hosting assessment.
 
 The proposed first core slice is `app_user -> branch_area -> site -> assignment and
-classification history`. It must not enter ERD approval or migration implementation
-until `SPEC-003`, `SPEC-004`, and `SPEC-005` are ruled.
+classification history`, with the normalized role/permission entities in front of
+`app_user`. `SPEC-003`, `SPEC-004`, and `SPEC-005` are ruled, so the slice may enter ERD
+review. It must not enter migration implementation until the ERD is approved.
 
 ## Working Rhythm
 

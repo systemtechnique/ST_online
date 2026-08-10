@@ -12,12 +12,13 @@ Statuses:
 
 | Area | Entity | Status | Source / blocker |
 | --- | --- | --- | --- |
-| Organisation | `app_user` | BLOCKED | Data Model Rev 4 section 1.1; `SPEC-005` role cardinality/extensibility |
-| Organisation | `branch_area` | BLOCKED | Data Model Rev 4 section 1.1; `SPEC-004`, `DATA-004` |
+| Organisation | `app_user` | READY | Data Model Rev 4 section 1.1; `RULING-2026-08-10-003` |
+| Organisation | `role`, `permission`, `user_role`, `role_permission` | PARTIAL | `RULING-2026-08-10-003`; exact permission seeds remain blocked by `SPEC-009` |
+| Organisation | `branch_area` | READY | Data Model Rev 4 section 1.1; `RULING-2026-08-10-002`; `DATA-004` affects legacy-area import, not table shape |
 | Clients | `client_group` | READY | Data Model Rev 4 section 1.2 |
-| Clients | `site` | BLOCKED | Data Model Rev 4 section 1.2; `SPEC-003`, `DATA-001` to `DATA-003` |
-| Clients | `site_classification_history` | BLOCKED | Data Model Rev 4 section 1.2; `SPEC-003` |
-| Clients | `site_branch_assignment` | BLOCKED | Data Model Rev 4 section 1.2; `SPEC-004` |
+| Clients | `site` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001`; `DATA-001` to `DATA-003` affect import mapping |
+| Clients | `site_classification_history` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001` |
+| Clients | `site_branch_assignment` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-002` |
 | Clients | `contact` | PARTIAL | Data Model Rev 4 section 1.2; recipient mapping blocked by `DATA-005` |
 | Systems | `system_unit` | PARTIAL | Data Model Rev 4 section 1.3; grouped `physical_data` and date fields need explicit column treatment |
 | SOW | `sow` | READY | Data Model Rev 4 section 1.3 |
@@ -38,11 +39,13 @@ Statuses:
 
 ## First Candidate Slice
 
-After the owner rulings, the first ERD slice should cover the minimum dependency chain
-needed for clients and branch-scoped access:
+The first ERD slice covers the minimum dependency chain needed for clients and
+branch-scoped access:
 
-`app_user` -> `branch_area` -> `site` -> classification and branch-assignment histories.
+`role` / `permission` -> `app_user` -> `branch_area` -> `site` -> classification and
+branch-assignment histories.
 
-It cannot be approved while `SPEC-003`, `SPEC-004`, and `SPEC-005` remain open. Independent
-review of `client_group`, `sow`, and other READY entities may continue, but no migration
-should be created from a partial diagram.
+`SPEC-003`, `SPEC-004`, and `SPEC-005` are resolved. The slice may now be rendered for
+review. `SPEC-009` prevents final permission seed data but does not prevent the normalized
+role structure. No migration may be created until this ERD slice is reviewed and
+approved.
