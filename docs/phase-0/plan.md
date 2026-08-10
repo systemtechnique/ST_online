@@ -16,14 +16,14 @@ features and does not authorize speculative schema work.
 - [x] Add the pinned GitHub Actions `quality` workflow and verify its first successful
   pull-request run.
 - [x] Track the three first-slice owner rulings as GitHub issues `#2`, `#3`, and `#4`.
+- [x] Install and verify Docker Desktop 29.6.2, Docker Compose 5.3.1, WSL2, and the
+  official PostgreSQL 18.4 development container.
 
 ## Pending
 
 - [ ] Obtain owner rulings for every ERD-blocking `SPEC-*` question.
 - [ ] Receive the completed Users, Roles & Access Questionnaire.
 - [ ] Confirm the canonical branch/area roster and initial role holders.
-- [ ] Install and verify the complete toolchain. Node.js 24.18.1, pnpm 11.21.0, and
-  TypeScript 6.0.3 are ready; Docker and PostgreSQL 18 tooling remain pending.
 - [ ] Record the database and migration-tool choice in an ADR.
 - [ ] Upgrade the GitHub plan to one that supports branch protection on a private
   repository, then require pull requests and the `quality` check on `main`.
