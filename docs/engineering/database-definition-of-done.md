@@ -2,7 +2,7 @@
 
 **Status: APPROVED IN PRINCIPLE - owner review copy pending final confirmation.**
 
-Kamal approved this document in principle on 2026-08-11 and requested one review pass
+Eng. Kamal approved this document in principle on 2026-08-11 and requested one review pass
 confirming the CLAUDE.md invariants below are actual tests. This status becomes
 `APPROVED` only after that review response is recorded.
 

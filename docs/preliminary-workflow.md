@@ -2,7 +2,7 @@
 
 **Status: APPROVED IN PRINCIPLE - owner review copy pending final confirmation.**
 
-Kamal approved this workflow in principle on 2026-08-11, subject to a review pass
+Eng. Kamal approved this workflow in principle on 2026-08-11, subject to a review pass
 confirming the authority/flag discipline and per-stage business acceptance gate. Both
 rules are explicit below; final approval is recorded only after his document review.
 
@@ -14,7 +14,7 @@ specifications, approved owner rulings, the ERD, or an API contract.
 
 | Role | Responsibility |
 | --- | --- |
-| Owner (Kamal) | Rules on specification questions, approves scope and business behaviour, and accepts delivered outcomes. |
+| Owner (Eng. Kamal) | Rules on specification questions, approves scope and business behaviour, and accepts delivered outcomes. |
 | Lead developer (Mohamed) | Owns the complete technical delivery: ERD, database, API, web application, tests, integration, and release preparation. Codex and Claude Code may assist, but all output remains governed by the repository contracts and approved specifications. |
 | Manager | Monitors progress, risks, decisions, and delivery evidence; no technical implementation is assigned. |
 | IT | Assesses production hosting, security, backup, recovery, access, and operational readiness. |
@@ -29,7 +29,7 @@ Every task starts by checking authority in this order:
 4. The approved task acceptance criteria and API contract.
 
 If the sources are incomplete or contradictory, the affected task becomes a
-`FLAG(spec)` question in `docs/rulings/open-questions.md`. Kamal rules on the question;
+`FLAG(spec)` question in `docs/rulings/open-questions.md`. Eng. Kamal rules on the question;
 neither Codex nor Claude Code fills the gap by assumption.
 
 ## End-To-End Flow
