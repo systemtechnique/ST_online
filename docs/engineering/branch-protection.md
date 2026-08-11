@@ -1,13 +1,18 @@
-# Branch Protection Proposal
+# Branch Protection Rules
 
-**Status: BLOCKED - repository plan and second reviewer identity pending.**
+**Status: APPROVED - implementation pending plan upgrade and second account.**
 
 On 10 August 2026, GitHub rejected the branch-protection API request for this private
 repository with HTTP 403: the current account must upgrade to GitHub Pro or make the
 repository public. Making the repository public is not acceptable because the
-specifications and project material are proprietary. Until the company approves a plan
-that supports private-repository protection, the rules below are followed manually and
-CI evidence is checked before every merge.
+specifications and project material are proprietary. Until the approved upgrade is
+purchased and active, the rules below are followed manually and CI evidence is checked
+before every merge.
+
+Kamal approved the private-repository plan upgrade and a second independent company
+reviewer account on 2026-08-11 (`RULING-2026-08-11-011`). Billing/account execution and
+the named reviewer remain pending. The reviewer cannot be the author of the code under
+review.
 
 Apply these rules to `main` after the company remote is created:
 

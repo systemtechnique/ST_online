@@ -12,30 +12,32 @@ Statuses:
 
 | Area | Entity | Status | Source / blocker |
 | --- | --- | --- | --- |
-| Organisation | `app_user` | PARTIAL | Data Model Rev 4 section 1.1; `RULING-2026-08-10-003`; authentication identity blocked by `SPEC-011` |
+| Organisation | `app_user` | READY FOR ERD | Data Model Rev 4 section 1.1; `RULING-2026-08-10-003`; company email identity ruled by `RULING-2026-08-11-005` |
 | Organisation | `role`, `permission`, `user_role`, `role_permission` | PARTIAL | `RULING-2026-08-10-003`; exact permission seeds remain blocked by `SPEC-009` |
 | Organisation | `branch_area` | READY | Data Model Rev 4 section 1.1; `RULING-2026-08-10-002`; `DATA-004` affects legacy-area import, not table shape |
 | Clients | `client_group` | READY | Data Model Rev 4 section 1.2 |
-| Clients | `site` | PARTIAL | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001`; core identity fields blocked by `SPEC-010` |
+| Clients | `site` | PARTIAL | Data Model Rev 4 section 1.2; identity/URC rules in `RULING-2026-08-11-004`; exact address/location columns pending formal model |
 | Clients | `site_classification_history` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-001` |
 | Clients | `site_branch_assignment` | READY | Data Model Rev 4 section 1.2; `RULING-2026-08-10-002` |
 | Clients | `contact` | PARTIAL | Data Model Rev 4 section 1.2; recipient mapping blocked by `DATA-005` |
 | Systems | `system_unit` | PARTIAL | Data Model Rev 4 section 1.3; grouped `physical_data` and date fields need explicit column treatment |
 | SOW | `sow` | READY | Data Model Rev 4 section 1.3 |
-| SOW | `sow_revision` | PARTIAL | Data Model Rev 4 section 1.3; signed artifact fields and internal notification path need `SPEC-006`/`SPEC-007` |
+| SOW | `sow_revision` | READY FOR ERD | Data Model Rev 4 section 1.3; internal notifications and artifact fields ruled by `RULING-2026-08-11-007` |
 | SOW | `sow_revision_system` | READY | Data Model Rev 4 section 1.3 |
 | Scheduling | `scheduled_visit` | READY | Data Model Rev 4 section 2.1 |
 | Scheduling | `sales_visit_plan` | READY | Data Model Rev 4 section 2.2 |
 | Visits | `visit` | READY | Data Model Rev 4 section 3 |
-| Readings | `reading` | PARTIAL | Data Model Rev 4 section 4.2; range-selection behaviour blocked by `SPEC-002` |
+| Readings | `reading` | READY | Data Model Rev 4 section 4.2; Stage 1 shared-range selection ruled by `RULING-2026-08-11-006` |
 | Configuration | `system_type` | PARTIAL | Data Model Rev 4 section 4.1; exact typed physical-data mechanism requires tracing |
-| Configuration | `parameter` | READY | Data Model Rev 4 section 4.1; count affects loader, not table shape (`SPEC-001`) |
+| Configuration | `parameter` | READY | Data Model Rev 4 section 4.1; 128-row config source ruled by `RULING-2026-08-11-006` |
 | Configuration | `system_type_parameter` | READY | Data Model Rev 4 section 4.1 |
-| Configuration | `parameter_range` | BLOCKED | Data Model Rev 4 section 4.1; `SPEC-002` launch behaviour |
+| Configuration | `parameter_range` | READY | Data Model Rev 4 section 4.1; source-keyed architecture dormant at launch per `RULING-2026-08-11-006` |
 | Alerts | `alert_rule` | PARTIAL | CLAUDE.md section 9 and Data Model Rev 4 section 4.3; routing targets require explicit fields |
-| Reports | `report` | BLOCKED | Data Model Rev 4 section 5.1; `SPEC-007` artifact structure |
-| Reports | `dispatch` | PARTIAL | Data Model Rev 4 section 5.2; internal recipients blocked by `SPEC-006` |
-| Stage 1 support | Standard letters, flags, watchlists, permissions, internal notifications | BLOCKED | `SPEC-008` |
+| Reports | `report` | READY FOR ERD | Data Model Rev 4 section 5.1; artifact fields ruled by `RULING-2026-08-11-007` |
+| Reports | `dispatch` | READY | Data Model Rev 4 section 5.2; client dispatch remains separate from internal notification |
+| Stage 1 support | Standard letters | READY FOR ERD | E1 section 21; propose through ERD per `RULING-2026-08-11-008` |
+| Stage 1 support | Permissions and internal notifications | PARTIAL | Structure may be proposed; permission seeds wait for `SPEC-009` |
+| Deferred design | TECH/REL/COM/STRAT flags and account watchlist | DEFERRED | Do not model or build until later owner ruling (`RULING-2026-08-11-008`) |
 
 ## First Candidate Slice
 
@@ -45,8 +47,8 @@ branch-scoped access:
 `role` / `permission` -> `app_user` -> `branch_area` -> `site` -> classification and
 branch-assignment histories.
 
-`SPEC-003`, `SPEC-004`, and `SPEC-005` are resolved. The slice may now be rendered for
-review. `SPEC-009` prevents final permission seed data but does not prevent the normalized
-role structure. The proposed rendering is in `docs/erd/stage-1-slice-1.md`. `SPEC-010`
-and `SPEC-011` must be ruled before the affected entity migrations, and no migration may
-be created until this ERD slice is reviewed and approved.
+The proposed rendering is in `docs/erd/stage-1-slice-1.md`. Role structure, login
+identity, site identity rules, Greenfield, and branch structure are ruled. The exact site
+address/location columns and owner review remain pending. `SPEC-009` prevents final
+permission seed data but does not prevent the normalized role structure. No migration
+may be created until this ERD slice is reviewed and explicitly approved.

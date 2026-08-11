@@ -33,6 +33,7 @@ erDiagram
     APP_USER {
         id app_user_id PK
         text name
+        text login_email UK
         id branch_area_id FK
         boolean active
     }
@@ -67,6 +68,11 @@ erDiagram
 
     SITE {
         id site_id PK
+        text name
+        enum registration_status
+        text erp_client_code UK
+        text address_text
+        text location_text
         id client_group_id FK
         id property_type_id FK
         integer star_rating
@@ -77,6 +83,7 @@ erDiagram
         id current_branch_area_id FK
         integer current_visits_per_month
         enum report_output_language
+        boolean active
     }
 
     SITE_CLASSIFICATION_HISTORY {
@@ -129,6 +136,29 @@ erDiagram
 - A Greenfield-to-Operating transition writes the first classification history row and
   updates the current classification in the same transaction.
 
+### Registration And Identity
+
+- `site.name` is required.
+- `site.registration_status` is `URC` or `REGISTERED`. The field name is the simplest
+  ERD representation of the ruled client state and remains subject to owner review.
+- A registered site has a required globally unique `erp_client_code`. Only a URC may
+  have a null ERP Client Code.
+- A URC is outside the registered client list and TOH. Registration assigns its ERP
+  code; it does not create a replacement site row.
+- Existing PC sites are registered and carry ERP codes.
+- `address_text` and `location_text` are proposed placeholders for the ruled
+  address/location data. They must be reconciled with the promised formal Data Model
+  field list before the site migration.
+- `site.active` deactivates a site without deleting its history.
+
+### User Login
+
+- `app_user.login_email` is required and unique and is the permanent login identifier.
+- Only company-owned email accounts are accepted. No personal-account email is stored
+  as a login identity.
+- The company-domain/account-ownership policy belongs in the authentication contract;
+  the database does not hardcode one domain without an explicit company-domain ruling.
+
 ### Branches
 
 - `branch_area` remains an OM-editable hierarchy; branch names are data, not enums.
@@ -154,8 +184,8 @@ erDiagram
 
 These are acceptance constraints for the later migration, not SQL in this document:
 
-1. An operating site has exactly one current classification in `C`, `ANC`, `PC`, or
-   `EXCLUDED`; a Greenfield site has none.
+1. A registered operating site has exactly one current classification in `C`, `ANC`,
+   `PC`, or `EXCLUDED`; Greenfield and URC records are outside TOH and have none.
 2. A site has at most one open classification-history row and at most one open
    branch-assignment row (`valid_to IS NULL`).
 3. Closing an open history row, inserting its successor, and updating the site's
@@ -170,16 +200,22 @@ These are acceptance constraints for the later migration, not SQL in this docume
    a new grant creates a new record.
 9. Deactivated users, roles, branches, and permissions remain available for historical
    attribution but cannot receive new operational assignments.
-10. All configuration and permission changes stamp actor and UTC timestamp.
+10. A non-null ERP Client Code is globally unique. It is required for `REGISTERED` and
+    null only for `URC`; state transition and code assignment occur in one transaction.
+11. `login_email` is required and unique across active and inactive users so a
+    deactivated identity cannot be silently reassigned.
+12. All configuration and permission changes stamp actor and UTC timestamp.
 
 ## Field Provenance
 
 | Entity / fields | Authority |
 | --- | --- |
 | `app_user`: `app_user_id`, `name`, `branch_area_id`, `active` | Data Model Rev 4 section 1.1 |
+| `app_user.login_email` | `RULING-2026-08-11-005` |
 | `branch_area`: all displayed fields | Data Model Rev 4 section 1.1 |
 | `site`: all displayed Data Model fields | Data Model Rev 4 section 1.2 |
 | `market_status` and four-value classification | `RULING-2026-08-10-001` |
+| Site name, registration state, ERP code, address/location, and active state | `RULING-2026-08-11-004`; exact address/location columns pending formal model |
 | Both history entities and their displayed fields | Data Model Rev 4 section 1.2, modified only to remove `GREENFIELD` from classification |
 | Normalized role entities and cardinality | `RULING-2026-08-10-003` |
 | Proposed role/permission field set and grant audit shape | ERD proposal requiring review |
@@ -188,12 +224,11 @@ These are acceptance constraints for the later migration, not SQL in this docume
 
 - `SPEC-009`: the detailed access matrix is missing. This blocks permission seed data
   and final authorization contracts, not the normalized entity structure.
-- `SPEC-010`: Data Model Rev 4 defines no site name, operational identifier, address, or
-  active-state fields. The ERD does not invent them; the `site` entity is incomplete for
-  migration until the owner issues the identity field set.
-- `SPEC-011`: Data Model Rev 4 defines no login identifier, email, or identity-provider
-  subject for `app_user`. The ERD does not invent an authentication identity; user-table
-  migration waits for the authentication contract.
+- `SPEC-010`: the owner ruled site name, registration state, ERP code, address/location,
+  and active state. Exact address/location columns still await the promised formal Data
+  Model update; the placeholders above require confirmation during ERD review.
+- Authentication-provider selection remains a technical ADR before auth implementation.
+  It does not block the ruled `login_email` identity field.
 - Primary-key SQL type, money representation, enum implementation, and migration
   mechanics are technical decisions to be finalized in the accepted database-tooling
   ADR before migration.
@@ -203,7 +238,8 @@ These are acceptance constraints for the later migration, not SQL in this docume
 Approval of this ERD confirms only the entity boundaries, relationships, cardinalities,
 and ruled field changes. Migration work starts only after:
 
-1. `SPEC-010` and `SPEC-011` are ruled for the affected entity fields.
+1. The formal site address/location field set is reconciled and the owner approves this
+   ERD revision.
 2. The database-tooling ADR and database Definition of Done are accepted.
 3. The approved ERD revision is committed with its review record.
 
