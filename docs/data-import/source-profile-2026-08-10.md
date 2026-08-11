@@ -53,8 +53,8 @@ controlled preprocessing step.
 - The roster branch structure conflicts with the Stage 1 E1 branch structure; see
   `SPEC-004` and `DATA-004` in the open-question register.
 - The SOW sample maps to an existing client and contact in the supplied exports.
-- It is a legacy artifact and is not a final Stage 1 template. Its intended internal or
-  client-facing role remains unresolved; see `DATA-006`.
+- It is a reference sample only and is not a final Stage 1 template. It must not be
+  reproduced as the new SOW; resolved by `RULING-2026-08-11-009`.
 
 ## Import Gate
 

@@ -1,6 +1,10 @@
 # Database Definition Of Done
 
-**Status: PROPOSED - requires kickoff approval.**
+**Status: APPROVED IN PRINCIPLE - owner review copy pending final confirmation.**
+
+Kamal approved this document in principle on 2026-08-11 and requested one review pass
+confirming the CLAUDE.md invariants below are actual tests. This status becomes
+`APPROVED` only after that review response is recorded.
 
 A database task is done only when every applicable item below is satisfied.
 
@@ -29,6 +33,19 @@ A database task is done only when every applicable item below is satisfied.
 - Signed, approved, and generated records lock at their ruled transition.
 - Range, SOW, report, and scope snapshots cannot drift after creation.
 - Actor and UTC timestamp audit fields exist for approvals and configuration changes.
+
+The following are mandatory executable tests, not documentation-only checks:
+
+- Append-only history permits exactly the one closing write and rejects restatement,
+  other updates, and deletes.
+- A signed SOW revision, approved visit, and generated report each reject mutation at
+  and after their ruled lock transition.
+- A reading stores the applicable range snapshot and later config changes do not alter
+  or re-evaluate that reading.
+- SOW sign-off rejects a revision unless every known site system is represented exactly
+  once as `IN_SCOPE` or `EXCLUDED`.
+- Every authorization rule proves one allowed case and at least one forbidden
+  role/branch case under default-deny.
 
 ## Security And Access
 

@@ -1,6 +1,6 @@
 # ADR 0001: PostgreSQL-First Database Tooling
 
-- **Status:** PROPOSED
+- **Status:** APPROVED - technical validation gate pending before ACCEPTED
 - **Date:** 2026-08-10
 - **Decision owners:** Database track and repository owner
 - **Related:** `CLAUDE.md` sections 2, 4, 5, and 11
@@ -16,7 +16,7 @@ The migration system must expose PostgreSQL constraints, indexes, types, functio
 triggers directly. A second declarative ORM schema must not become an authority that can
 silently omit or regenerate these database rules.
 
-## Proposed Decision
+## Approved Decision
 
 Use:
 
@@ -32,10 +32,10 @@ Do not introduce an ORM as the schema or migration authority in the initial data
 package. A typed query builder may be considered later through a separate ADR if
 application query complexity demonstrates the need.
 
-## Candidate Pinned Baseline
+## Approved Pinned Baseline For Validation
 
-These are candidate versions for the environment/tooling smoke test, not installed
-dependencies until this ADR is approved:
+These versions are approved for the environment/tooling smoke test. The migration and
+driver dependencies are installed only as part of that isolated validation task:
 
 | Component | Candidate |
 | --- | --- |
@@ -119,6 +119,10 @@ managed migration system without giving up those controls.
   types cannot become a migration source.
 
 ## Approval Gate
+
+The repository owner approved the tooling choice on 2026-08-11 through
+`RULING-2026-08-11-010`. Change this ADR to `ACCEPTED` only after the validation below
+passes and its evidence is committed.
 
 Before changing this ADR to ACCEPTED:
 

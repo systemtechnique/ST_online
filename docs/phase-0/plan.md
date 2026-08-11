@@ -22,24 +22,32 @@ features and does not authorize speculative schema work.
   first ERD structure.
 - [x] Render the proposed first ERD slice directly from Data Model Rev 4 plus the owner
   rulings.
+- [x] Approve the PostgreSQL-first tooling choice, Markdown/Mermaid ERD process, and
+  OpenAPI 3.1 contract-first process.
+- [x] Approve the private GitHub plan upgrade and a second independent reviewer account.
+- [x] Receive owner rulings for parameter counts/ranges, internal notifications,
+  immutable artifacts, support-structure sequencing, site identity, login identity,
+  and the legacy SOW sample.
 
 ## Pending
 
-- [ ] Receive the completed Users, Roles & Access Questionnaire.
+- [ ] Receive the completed Users, Roles & Access Questionnaire Part 4.
 - [ ] Obtain owner rulings for the remaining module-specific `SPEC-*` questions before
   implementing each affected slice.
 - [ ] Confirm legacy-area mappings and the detailed access matrix; these block import
   and permission seeds, not the first ERD structure.
-- [ ] Record the database and migration-tool choice in an ADR.
-- [ ] Upgrade the GitHub plan to one that supports branch protection on a private
-  repository, then require pull requests and the `quality` check on `main`.
-- [ ] Confirm a second GitHub reviewer identity before requiring approvals or CODEOWNER
-  review; one participating account cannot approve its own pull request.
-- [ ] Approve the ERD process and ERD tool/output format.
-- [ ] Approve the API-contract process and ownership boundary.
-- [ ] Approve the database Definition of Done.
-- [ ] Resolve the site-identity and authentication-identity flags found while rendering
-  the first ERD slice, then review and approve the diagram.
+- [ ] Complete the database-tooling ADR smoke/constraint validation, then mark it
+  `ACCEPTED`.
+- [ ] Decide the authentication provider and external-subject representation in a
+  technical ADR before authentication implementation.
+- [ ] Account/billing owner upgrades GitHub; then enable private branch protection and
+  the required `quality` check.
+- [ ] Propose and confirm the named second account holder, then require independent
+  approval and CODEOWNER review.
+- [ ] Send the ERD, database Definition of Done, and workflow copies to Kamal; record his
+  final review of each.
+- [ ] Receive the formal site address/location field list, update the first ERD, and
+  obtain explicit ERD approval before migration.
 
 ## Exit Criteria
 

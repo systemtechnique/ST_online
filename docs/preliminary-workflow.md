@@ -1,6 +1,10 @@
 # ST Online 2.0 Preliminary Delivery Workflow
 
-**Status: PROPOSED - to be approved during Phase 0.**
+**Status: APPROVED IN PRINCIPLE - owner review copy pending final confirmation.**
+
+Kamal approved this workflow in principle on 2026-08-11, subject to a review pass
+confirming the authority/flag discipline and per-stage business acceptance gate. Both
+rules are explicit below; final approval is recorded only after his document review.
 
 This document explains how Stage 1 work moves from an authoritative requirement to a
 released feature. It is a coordination view only. It does not replace `CLAUDE.md`, the
@@ -122,16 +126,17 @@ Release evidence and any rollback or forward-fix procedure are recorded before d
 
 **Output:** an accepted production release with an audit trail and operational handoff.
 
-## Current Gate - 10 August 2026
+## Current Gate - 11 August 2026
 
 The controlled baseline, privacy-safe profiling tools, private remote, CI, CODEOWNERS,
 and local PostgreSQL 18 environment exist. The following items still prevent the first
 schema migration:
 
-- The completed Users, Roles & Access Questionnaire.
-- Approval of the ERD process, API-contract process, and database Definition of Done.
+- The completed Users, Roles & Access Questionnaire Part 4.
+- Final owner confirmation of this workflow and the database Definition of Done after
+  reviewing the supplied copies.
 - Review and approval of the first ERD slice.
-- GitHub private-repository branch protection, which requires a plan upgrade.
+- Completion of the approved GitHub plan upgrade and second reviewer account.
 - IT's written pass/fail production-hosting assessment.
 
 The proposed first core slice is `app_user -> branch_area -> site -> assignment and

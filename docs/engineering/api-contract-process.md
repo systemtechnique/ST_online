@@ -1,9 +1,10 @@
 # API Contract Process
 
-**Status: PROPOSED - requires kickoff approval.**
+**Status: APPROVED - 2026-08-11, `RULING-2026-08-11-010`.**
 
-The API contract is the shared boundary between the database/backend track and the web
-track. Neither track changes that boundary unilaterally.
+The API contract is the shared boundary between the database/backend work and the web
+application. Mohamed owns both sides, but still proposes and versions the boundary
+before implementing either side.
 
 ## Contract Source
 
